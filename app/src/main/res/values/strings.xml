@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">VT</string>
+    <string name="permission_message">This app needs to record audio and recognize your speech.</string>
+</resources>

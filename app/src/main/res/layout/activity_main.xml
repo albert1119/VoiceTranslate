@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.app.albertstudio.vt.MainActivity">
+
+    <TextView
+        android:id="@+id/inputText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="輸入文字："
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.062" />
+
+    <TextView
+        android:id="@+id/OutputText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="翻譯文字："
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.376" />
+
+    <Button
+        android:id="@+id/StartBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="中翻英"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp" />
+    <Button
+        android:id="@+id/StartBtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="中翻日"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/StartBtn"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <Button
+        android:id="@+id/StartBtn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="英翻中"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/StartBtn" />
+    <Button
+        android:id="@+id/StartBtn5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="英翻日"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/StartBtn3"
+        app:layout_constraintBottom_toBottomOf="parent" />
+    <Button
+        android:id="@+id/startTranslateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="開始翻譯"
+        app:layout_constraintLeft_toRightOf="@+id/StartBtn5"
+        app:layout_constraintBottom_toTopOf="@+id/stopTranslateBtn" />
+    <Button
+        android:id="@+id/stopTranslateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="停止翻譯"
+        app:layout_constraintLeft_toRightOf="@+id/StartBtn5"
+        app:layout_constraintBottom_toTopOf="@+id/stopBtn" />
+    <Button
+        android:id="@+id/stopBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="停止收音"
+        app:layout_constraintLeft_toRightOf="@+id/StartBtn5"
+        app:layout_constraintBottom_toTopOf="@+id/disconnBtn" />
+
+    <Button
+        android:id="@+id/disconnBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="斷開"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/connBtn"
+        app:layout_constraintLeft_toRightOf="@+id/StartBtn5" />
+
+    <Button
+        android:id="@+id/connBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="連線"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/StartBtn5" />
+
+    <Button
+        android:id="@+id/StartBtn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="中翻韓"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/StartBtn2"
+        app:layout_constraintLeft_toLeftOf="parent" />
+    <Button
+        android:id="@+id/StartBtn6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="日翻中"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/StartBtn2"
+        app:layout_constraintBottom_toTopOf="@+id/StartBtn3" />
+    <Button
+        android:id="@+id/StartBtn7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="中翻泰"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/StartBtn4" />
+    <Button
+        android:id="@+id/StartBtn8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="泰翻中"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/StartBtn9"
+        app:layout_constraintLeft_toRightOf="@+id/StartBtn7" />
+    <Button
+        android:id="@+id/StartBtn9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="韓翻中"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/StartBtn6"
+        app:layout_constraintLeft_toRightOf="@+id/StartBtn4" />
+
+</android.support.constraint.ConstraintLayout>
