@@ -1,6 +1,7 @@
 package com.app.albertstudio.vt;
 
-
+import android.support.v4.app.ActivityCompat;
+import static android.Manifest.permission.*;
 import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
@@ -177,7 +178,7 @@ public class MainActivity extends AppCompatActivity  implements MessageDialogFra
                                     }
                                     else
                                     {
-                                        startVoiceRecorder();
+                                        CheckPermission();
                                     }
                                 }
                                 else
@@ -256,6 +257,7 @@ public class MainActivity extends AppCompatActivity  implements MessageDialogFra
         mSocketThread.setName("TOBY");
 
 
+
     }
 
     @Override
@@ -307,7 +309,7 @@ public class MainActivity extends AppCompatActivity  implements MessageDialogFra
             tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
                 @Override
                 public void onDone(String utteranceId) {
-                    startVoiceRecorder();
+                    CheckPermission();
                 }
 
                 @Override
@@ -320,6 +322,24 @@ public class MainActivity extends AppCompatActivity  implements MessageDialogFra
             });
         } else {
 
+        }
+    }
+
+    private void CheckPermission()
+    {
+        int permission = ActivityCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO);
+        if (permission != PackageManager.PERMISSION_GRANTED)
+        {
+            // 無權限，向使用者請求
+            ActivityCompat.requestPermissions(
+                    this,
+                    new String[] {Manifest.permission.RECORD_AUDIO},
+                    REQUEST_RECORD_AUDIO_PERMISSION
+            );
+        }
+        else
+        {
+            startVoiceRecorder();
         }
     }
 
@@ -407,7 +427,8 @@ public class MainActivity extends AppCompatActivity  implements MessageDialogFra
             target = "en";
             changeTTSLanguage();
             mSpeechService.setLanguageCode(source);
-            startVoiceRecorder();
+
+            CheckPermission();
         }};
 
     private Button.OnClickListener buttonToTranslateOnClickListener2 = new Button.OnClickListener(){
@@ -420,7 +441,7 @@ public class MainActivity extends AppCompatActivity  implements MessageDialogFra
             target = "ja";
             changeTTSLanguage();
             mSpeechService.setLanguageCode(source);
-            startVoiceRecorder();
+            CheckPermission();
         }};
 
     private Button.OnClickListener buttonToTranslateOnClickListener3 = new Button.OnClickListener(){
@@ -434,7 +455,7 @@ public class MainActivity extends AppCompatActivity  implements MessageDialogFra
             changeTTSLanguage();
             changeTTSLanguage();
             mSpeechService.setLanguageCode(source);
-            startVoiceRecorder();
+            CheckPermission();
         }};
 
     private Button.OnClickListener buttonToTranslateOnClickListener4 = new Button.OnClickListener(){
@@ -448,7 +469,7 @@ public class MainActivity extends AppCompatActivity  implements MessageDialogFra
             changeTTSLanguage();
             changeTTSLanguage();
             mSpeechService.setLanguageCode(source);
-            startVoiceRecorder();
+            CheckPermission();
         }};
 
     private Button.OnClickListener buttonToTranslateOnClickListener5 = new Button.OnClickListener(){
@@ -462,7 +483,7 @@ public class MainActivity extends AppCompatActivity  implements MessageDialogFra
             changeTTSLanguage();
             changeTTSLanguage();
             mSpeechService.setLanguageCode(source);
-            startVoiceRecorder();
+            CheckPermission();
         }};
 
     private Button.OnClickListener buttonToTranslateOnClickListener6 = new Button.OnClickListener(){
@@ -476,7 +497,7 @@ public class MainActivity extends AppCompatActivity  implements MessageDialogFra
             changeTTSLanguage();
             changeTTSLanguage();
             mSpeechService.setLanguageCode(source);
-            startVoiceRecorder();
+            CheckPermission();
         }};
 
     private Button.OnClickListener buttonToTranslateOnClickListener7 = new Button.OnClickListener(){
@@ -490,7 +511,7 @@ public class MainActivity extends AppCompatActivity  implements MessageDialogFra
             changeTTSLanguage();
             changeTTSLanguage();
             mSpeechService.setLanguageCode(source);
-            startVoiceRecorder();
+            CheckPermission();
         }};
 
     private Button.OnClickListener buttonToTranslateOnClickListener8 = new Button.OnClickListener(){
@@ -504,7 +525,7 @@ public class MainActivity extends AppCompatActivity  implements MessageDialogFra
             changeTTSLanguage();
             changeTTSLanguage();
             mSpeechService.setLanguageCode(source);
-            startVoiceRecorder();
+            CheckPermission();
         }};
 
     private Button.OnClickListener buttonToTranslateOnClickListener9 = new Button.OnClickListener(){
@@ -518,7 +539,9 @@ public class MainActivity extends AppCompatActivity  implements MessageDialogFra
             changeTTSLanguage();
             changeTTSLanguage();
             mSpeechService.setLanguageCode(source);
-            startVoiceRecorder();
+            int permission = ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO);
+            CheckPermission();
+
             /*
             Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
             intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
@@ -598,8 +621,7 @@ public class MainActivity extends AppCompatActivity  implements MessageDialogFra
             HttpClient httpclient = new DefaultHttpClient();
 
             // Prepare a request object
-            HttpGet httpget = new HttpGet("https://www.googleapis.com/language/translate/v2?key=yourkey=" + param[0].replace(" ", "%20") + "&source=" + source + "&target=" + target);
-
+            HttpGet httpget = new HttpGet("https://www.googleapis.com/language/translate/v2?key=your_key&q=" + param[0].replace(" ", "%20") + "&source=" + source + "&target=" + target);
 
             // Execute the request
             HttpResponse response;
